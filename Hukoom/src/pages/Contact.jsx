@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./Contact.css";
+const API_URL = "https://hukoom-trusted-local-services.onrender.com";
 
 /* ─── Fade-In on Scroll Hook ─── */
 function useFadeIn() {
@@ -82,7 +83,7 @@ function Contact() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:3000/api/contact", {
+      const response = await fetch(`${API_URL}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

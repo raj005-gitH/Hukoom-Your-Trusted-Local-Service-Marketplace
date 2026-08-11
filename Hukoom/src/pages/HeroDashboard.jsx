@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./HeroDashboard.css";
+const API_URL = "https://hukoom-trusted-local-services.onrender.com";
 
 /* ─── Time Formatting Helpers ─── */
 function timeAgo(dateStr) {
@@ -59,7 +60,7 @@ function HeroDashboard() {
 
   // Fetch supported cities
   useEffect(() => {
-    axios.get("http://localhost:3000/api/supported-cities")
+    axios.get(`${API_URL}/api/supported-cities`)
       .then(res => setCities(res.data.cities))
       .catch(() => setCities(["Noida", "Greater Noida"]));
   }, []);
@@ -68,7 +69,7 @@ function HeroDashboard() {
   const fetchAreas = useCallback(async (city) => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:3000/api/queries/areas/${city.toLowerCase()}`);
+      const res = await axios.get(`${API_URL}/api/queries/areas/${city.toLowerCase()}`);
       setAreas(res.data.areas);
     } catch {
       setAreas([]);
@@ -81,7 +82,7 @@ function HeroDashboard() {
   const fetchQueries = useCallback(async (city, area) => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:3000/api/queries/${city.toLowerCase()}/${encodeURIComponent(area)}`);
+      const res = await axios.get(`${API_URL}/api/queries/${city.toLowerCase()}/${encodeURIComponent(area)}`);
       setQueries(res.data.queries);
     } catch {
       setQueries([]);
@@ -116,7 +117,7 @@ function HeroDashboard() {
   const handleAccept = async (queryId) => {
     setAccepting(queryId);
     try {
-      await axios.patch(`http://localhost:3000/api/queries/${queryId}/accept`, {
+      await axios.patch(`${API_URL}/api/queries/${queryId}/accept`, {
         heroId: user._id,
         heroName: user.fullname,
       });

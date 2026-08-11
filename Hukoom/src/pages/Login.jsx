@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./Login.css";
 import axios from "axios";
+const API_URL = "https://hukoom-trusted-local-services.onrender.com";
 
 function Login() {
   const navigate = useNavigate();
@@ -52,8 +53,8 @@ function Login() {
         // ─── LOGIN ───
         const endpoint =
           selectedRole === "hero"
-            ? "http://localhost:3000/api/login-hero"
-            : "http://localhost:3000/api/login-user";
+            ? `${API_URL}/api/login-hero`
+            : `${API_URL}/api/login-user`;
 
         const response = await axios.post(endpoint, {
           email: formData.email,
@@ -71,8 +72,8 @@ function Login() {
         // ─── SIGNUP ───
         const endpoint =
           selectedRole === "hero"
-            ? "http://localhost:3000/api/register-hero"
-            : "http://localhost:3000/api/register-user";
+            ? `${API_URL}/api/register-hero`
+            : `${API_URL}/api/register-user`;
 
         let payload;
         if (selectedRole === "hero") {

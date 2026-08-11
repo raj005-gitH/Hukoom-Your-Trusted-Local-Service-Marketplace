@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import "./About.css";
+const API_URL = "https://hukoom-trusted-local-services.onrender.com";
 
 /* ─── Fade-in Hook ─── */
 function useFadeIn() {

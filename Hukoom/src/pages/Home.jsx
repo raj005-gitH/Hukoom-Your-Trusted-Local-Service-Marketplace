@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
+const API_URL = "https://hukoom-trusted-local-services.onrender.com"; //not needed for home.jsx but keeping it for consistency with other pages
 
 /* ─── Animated Counter Hook ─── */
 function useCounter(end, duration = 2000, startOnView = true) {

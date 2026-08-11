@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./Profile.css";
+const API_URL = "https://hukoom-trusted-local-services.onrender.com";
 
 /* ─── Fade-In on Scroll Hook ─── */
 function useFadeIn() {
@@ -86,8 +87,8 @@ function Profile() {
         const isHeroRole = role === "hero";
         const id = user._id;
         const endpoint = isHeroRole
-          ? `http://localhost:3000/api/queries/hero/${id}`
-          : `http://localhost:3000/api/queries/user/${id}`;
+          ? `${API_URL}/api/queries/hero/${id}`
+          : `${API_URL}/api/queries/user/${id}`;
 
         const res = await fetch(endpoint);
         if (!res.ok) throw new Error("Failed to fetch bookings");
@@ -107,7 +108,7 @@ function Profile() {
   const handleComplete = async (queryId) => {
     if (!window.confirm("Mark this work as successfully completed?")) return;
     try {
-      const res = await fetch(`http://localhost:3000/api/queries/${queryId}/complete`, {
+      const res = await fetch(`${API_URL}/api/queries/${queryId}/complete`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user._id }),
@@ -124,7 +125,7 @@ function Profile() {
   const handleCancelWork = async (queryId) => {
     if (!window.confirm("Are you sure you want to cancel this work? Frequent cancellations may lead to a temporary ban.")) return;
     try {
-      const res = await fetch(`http://localhost:3000/api/queries/${queryId}/cancel`, {
+      const res = await fetch(`${API_URL}/api/queries/${queryId}/cancel`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ heroId: user._id }),
