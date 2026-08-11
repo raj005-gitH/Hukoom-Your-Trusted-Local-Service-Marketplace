@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+Hukoom/node_modules/
+Hukoom/dist/
+Backend/node_modules/
+Backend/.env
+build/
