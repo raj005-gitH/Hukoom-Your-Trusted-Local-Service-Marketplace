@@ -1,0 +1,714 @@
+/* ============================================
+   POST QUERY PAGE — Premium Navy Blue Theme
+   ============================================ */
+
+.pq-page {
+  min-height: 100vh;
+  padding-top: calc(var(--nav-height) + 32px);
+  padding-bottom: 60px;
+  background: var(--navy-900);
+  position: relative;
+  overflow: hidden;
+}
+
+.pq-page::before {
+  content: "";
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.pq-page::after {
+  content: "";
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.pq-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── HEADER ─── */
+.pq-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pq-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.pq-subtitle {
+  font-size: 1.05rem;
+  color: var(--gray-400);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ─── PROGRESS BAR ─── */
+.pq-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.pq-progress-line {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 3px;
+  background: var(--navy-600);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.pq-progress-fill {
+  height: 100%;
+  background: var(--gradient-accent);
+  border-radius: 2px;
+  transition: width 0.5s var(--ease-out);
+}
+
+.pq-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+}
+
+.pq-progress-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: var(--navy-700);
+  color: var(--gray-400);
+  border: 2px solid var(--navy-500);
+  transition: all 0.4s var(--ease-out);
+}
+
+.pq-progress-step.active .pq-progress-dot {
+  background: var(--gradient-accent);
+  color: var(--white);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+.pq-progress-step.completed .pq-progress-dot {
+  background: #10b981;
+  color: var(--white);
+  border-color: #10b981;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.3);
+}
+
+.pq-progress-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pq-progress-step.active .pq-progress-label {
+  color: var(--accent-light);
+}
+
+.pq-progress-step.completed .pq-progress-label {
+  color: #6ee7b7;
+}
+
+/* ─── STEP CARD ─── */
+.pq-step-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(20px);
+}
+
+.pq-fade-in {
+  animation: pqFadeIn 0.5s var(--ease-out) both;
+}
+
+@keyframes pqFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pq-step-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.pq-step-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.pq-step-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.pq-step-desc {
+  font-size: 0.95rem;
+  color: var(--gray-400);
+}
+
+.pq-step-desc strong {
+  color: var(--accent-light);
+}
+
+/* ─── CITY GRID ─── */
+.pq-city-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.pq-city-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 20px;
+  background: var(--navy-800);
+  border: 2px solid var(--navy-600);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  position: relative;
+}
+
+.pq-city-card:hover {
+  border-color: var(--navy-400);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.pq-city-card.selected {
+  border-color: var(--accent-primary);
+  background: rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
+}
+
+.pq-city-emoji {
+  font-size: 2.2rem;
+}
+
+.pq-city-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.pq-city-check {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  animation: pqPop 0.3s var(--ease-spring);
+}
+
+@keyframes pqPop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+/* ─── AREA SEARCH & GRID ─── */
+.pq-search-wrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.pq-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-500);
+}
+
+.pq-search-input {
+  width: 100%;
+  padding: 14px 16px 14px 46px;
+  background: var(--navy-800);
+  border: 2px solid var(--navy-600);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+.pq-search-input::placeholder {
+  color: var(--gray-500);
+}
+
+.pq-search-input:focus {
+  border-color: var(--accent-primary);
+}
+
+.pq-area-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 4px;
+  margin-bottom: 28px;
+}
+
+.pq-area-grid::-webkit-scrollbar {
+  width: 6px;
+}
+.pq-area-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+.pq-area-grid::-webkit-scrollbar-thumb {
+  background: var(--navy-500);
+  border-radius: 3px;
+}
+
+.pq-area-chip {
+  padding: 10px 18px;
+  background: var(--navy-800);
+  border: 1.5px solid var(--navy-600);
+  border-radius: 10px;
+  color: var(--gray-300);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+}
+
+.pq-area-chip:hover {
+  border-color: var(--accent-primary);
+  color: var(--white);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.pq-area-chip.selected {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: var(--accent-primary);
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.pq-chip-check {
+  font-size: 0.7rem;
+  background: var(--accent-primary);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+
+.pq-no-results {
+  width: 100%;
+  text-align: center;
+  padding: 32px;
+  color: var(--gray-500);
+  font-size: 0.95rem;
+}
+
+/* ─── FORM FIELDS ─── */
+.pq-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.pq-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pq-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-300);
+  letter-spacing: 0.3px;
+}
+
+.pq-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--navy-800);
+  border: 2px solid var(--navy-600);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color 0.3s;
+  outline: none;
+  line-height: 1.6;
+}
+
+.pq-textarea::placeholder {
+  color: var(--gray-500);
+}
+
+.pq-textarea:focus {
+  border-color: var(--accent-primary);
+}
+
+.pq-price-wrap {
+  display: flex;
+  align-items: center;
+  background: var(--navy-800);
+  border: 2px solid var(--navy-600);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.pq-price-wrap:focus-within {
+  border-color: var(--accent-primary);
+}
+
+.pq-price-symbol {
+  padding: 14px 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  background: var(--navy-700);
+  border-right: 1px solid var(--navy-600);
+}
+
+.pq-price-input {
+  flex: 1;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  outline: none;
+}
+
+.pq-price-input::placeholder {
+  color: var(--gray-500);
+  font-weight: 400;
+}
+
+/* Remove number input spinners */
+.pq-price-input::-webkit-outer-spin-button,
+.pq-price-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.pq-price-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ─── EXPIRY GRID ─── */
+.pq-expiry-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pq-expiry-chip {
+  padding: 10px 18px;
+  background: var(--navy-800);
+  border: 1.5px solid var(--navy-600);
+  border-radius: 10px;
+  color: var(--gray-300);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out);
+  font-family: var(--font-body);
+}
+
+.pq-expiry-chip:hover {
+  border-color: var(--accent-primary);
+  color: var(--white);
+}
+
+.pq-expiry-chip.selected {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: var(--accent-primary);
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+/* ─── ERROR ─── */
+.pq-error {
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  color: #fca5a5;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* ─── ACTIONS ─── */
+.pq-step-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.pq-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--gradient-accent);
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  font-family: var(--font-primary);
+}
+
+.pq-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.35);
+}
+
+.pq-btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pq-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 20px;
+  background: transparent;
+  color: var(--gray-400);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--font-primary);
+}
+
+.pq-btn-ghost:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.pq-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--gray-300);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 2px solid var(--navy-500);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  font-family: var(--font-primary);
+}
+
+.pq-btn-secondary:hover {
+  border-color: var(--gray-400);
+  color: var(--white);
+}
+
+/* ─── SPINNER ─── */
+.pq-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.25);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: pqSpin 0.7s linear infinite;
+}
+
+@keyframes pqSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── SUCCESS CARD ─── */
+.pq-success-card {
+  text-align: center;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 48px 40px;
+  backdrop-filter: blur(20px);
+  animation: pqFadeIn 0.5s var(--ease-out) both;
+}
+
+.pq-success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #06d6a0);
+  color: var(--white);
+  font-size: 2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 40px rgba(16, 185, 129, 0.3);
+  animation: pqPop 0.5s var(--ease-spring) 0.2s both;
+}
+
+.pq-success-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.pq-success-desc {
+  font-size: 1rem;
+  color: var(--gray-400);
+  line-height: 1.7;
+  max-width: 440px;
+  margin: 0 auto 28px;
+}
+
+.pq-success-desc strong {
+  color: var(--accent-light);
+}
+
+.pq-success-details {
+  background: var(--navy-800);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.pq-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.pq-detail-row + .pq-detail-row {
+  border-top: 1px solid var(--navy-600);
+}
+
+.pq-detail-label {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  font-weight: 500;
+}
+
+.pq-detail-value {
+  font-size: 0.95rem;
+  color: var(--white);
+  font-weight: 600;
+  max-width: 60%;
+  text-align: right;
+}
+
+.pq-success-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .pq-title {
+    font-size: 1.8rem;
+  }
+
+  .pq-step-card {
+    padding: 28px 20px;
+  }
+
+  .pq-progress {
+    gap: 50px;
+  }
+
+  .pq-progress-line {
+    width: 140px;
+  }
+
+  .pq-city-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pq-success-card {
+    padding: 32px 20px;
+  }
+
+  .pq-success-actions {
+    flex-direction: column;
+  }
+}
